@@ -96,7 +96,7 @@ export class AwsLocalAuthorizerPlugin {
         const authorizersFile = `${this.serverless.config.servicePath}/local-authorizers.js`;
         let authorizers = {};
         try {
-            authorizers = require(authorizersFile);
+            authorizers = import(authorizersFile);
         } catch (err) {
             this.serverless.cli.log(`Unable to load local authorizers from ${authorizersFile}`, "serverless-offline-local-authorizers-plugin", { color: "red" });
             return null;
